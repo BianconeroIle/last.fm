@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">last.fm</string>
+    <string name="search_artists">Search artist...</string>
+    <string name="error_getting_artist_from_server">Error getting artists from server</string>
+</resources>
