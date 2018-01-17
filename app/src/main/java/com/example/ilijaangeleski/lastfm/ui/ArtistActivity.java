@@ -48,6 +48,7 @@ public class ArtistActivity extends AppCompatActivity implements ArtistView {
     }
 
     private void initView() {
+
         adapter = new ArtistRecyclerViewAdapter(presenter.getArtists());
         artistRecyclerView.setAdapter(adapter);
     }

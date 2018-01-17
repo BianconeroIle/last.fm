@@ -3,6 +3,7 @@ package com.example.ilijaangeleski.lastfm.presenter;
 import com.example.ilijaangeleski.lastfm.callback.ArtistCallback;
 import com.example.ilijaangeleski.lastfm.manager.ArtistManager;
 import com.example.ilijaangeleski.lastfm.model.Artist;
+import com.example.ilijaangeleski.lastfm.model.Result;
 import com.example.ilijaangeleski.lastfm.model.Results;
 import com.example.ilijaangeleski.lastfm.view.ArtistView;
 
@@ -27,12 +28,12 @@ public class ArtistPresenter {
     public void onTextChange(final String query) {
         artistManager.fetchArtists(query, new ArtistCallback() {
             @Override
-            public void onSuccess(Results response) {
+            public void onSuccess(Result response) {
                 ArtistView view = artistViewWeakReference.get();
                 if (view != null) {
-                    if (response != null) {
+                    if (response != null && response.getResults() != null && response.getResults().getArtistMatches() != null) {
                         artists.clear();
-                        artists.addAll(response.getArtistMatches().getArtists());
+                        artists.addAll(response.getResults().getArtistMatches().getArtists());
                         view.updateView();
                     } else {
                         artists.clear();

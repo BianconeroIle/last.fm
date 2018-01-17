@@ -16,8 +16,6 @@ public class Results {
     @SerializedName("artistMatches")
     private ArtistMatches artistMatches;
 
-
-
     public OpensearchQuery getOpensearchQuery() {
         return opensearchQuery;
     }

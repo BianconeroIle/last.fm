@@ -1,5 +1,6 @@
 package com.example.ilijaangeleski.lastfm.api;
 
+import com.example.ilijaangeleski.lastfm.model.Result;
 import com.example.ilijaangeleski.lastfm.model.Results;
 
 import retrofit2.Call;
@@ -18,7 +19,7 @@ public interface NetworkApi {
     //http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=cher&api_key=fd16f687aad33b07a3c80f8c1e4eb970&format=json
 
     @GET("?method=artist.search")
-    Call<Results> fetchArtist(@Query("artist") String query, @Query("api_key") String apiKey,@Query("format") String json);
+    Call<Result> fetchArtist(@Query("artist") String query, @Query("api_key") String apiKey, @Query("format") String json);
 
     //http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=cher&api_key=fd16f687aad33b07a3c80f8c1e4eb970&format=json
 

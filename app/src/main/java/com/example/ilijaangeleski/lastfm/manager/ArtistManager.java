@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.ilijaangeleski.lastfm.api.NetworkApi;
 import com.example.ilijaangeleski.lastfm.callback.ArtistCallback;
+import com.example.ilijaangeleski.lastfm.model.Result;
 import com.example.ilijaangeleski.lastfm.model.Results;
 
 import retrofit2.Call;
@@ -23,15 +24,15 @@ public class ArtistManager {
     }
 
     public void fetchArtists(String query,final ArtistCallback callback){
-        networkApi.fetchArtist(query,NetworkApi.API_KEY,format).enqueue(new Callback<Results>() {
+        networkApi.fetchArtist(query,NetworkApi.API_KEY,format).enqueue(new Callback<Result>() {
             @Override
-            public void onResponse(Call<Results> call, Response<Results> response) {
+            public void onResponse(Call<Result> call, Response<Result> response) {
                 Log.d("fetchArtists","onResponse");
                 callback.onSuccess(response.body());
             }
 
             @Override
-            public void onFailure(Call<Results> call, Throwable t) {
+            public void onFailure(Call<Result> call, Throwable t) {
                 callback.onFailure(t);
                 Log.d("fetchArtists","onFailure");
             }

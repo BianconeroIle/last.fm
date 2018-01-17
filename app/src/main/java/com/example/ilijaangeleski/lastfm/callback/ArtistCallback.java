@@ -1,5 +1,6 @@
 package com.example.ilijaangeleski.lastfm.callback;
 
+import com.example.ilijaangeleski.lastfm.model.Result;
 import com.example.ilijaangeleski.lastfm.model.Results;
 
 /**
@@ -7,7 +8,7 @@ import com.example.ilijaangeleski.lastfm.model.Results;
  */
 
 public interface ArtistCallback {
-    void onSuccess(Results response);
+    void onSuccess(Result response);
 
     void onFailure(Throwable t);
 }
