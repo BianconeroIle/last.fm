@@ -13,7 +13,7 @@ public class Results {
     private String opensearchStartIndex;
     @SerializedName("opensearch:itemsPerPage")
     private String opensearchItemsPerPage;
-    @SerializedName("artistMatches")
+    @SerializedName("artistmatches")
     private ArtistMatches artistMatches;
 
     public OpensearchQuery getOpensearchQuery() {

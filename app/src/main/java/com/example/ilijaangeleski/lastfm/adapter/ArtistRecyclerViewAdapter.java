@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.ilijaangeleski.lastfm.R;
 import com.example.ilijaangeleski.lastfm.model.Artist;
+import com.example.ilijaangeleski.lastfm.model.Image;
 import com.example.ilijaangeleski.lastfm.util.CircleTransform;
 import com.squareup.picasso.Picasso;
 
@@ -23,13 +24,14 @@ import butterknife.ButterKnife;
 
 public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<ArtistRecyclerViewAdapter.MyViewHolder> {
     private List<Artist> artist;
-    private OnArtistClick listener;
+    private List<Image> images;
+    private OnUserItemClick listener;
 
     public ArtistRecyclerViewAdapter(List<Artist> artist) {
         this.artist = artist;
     }
 
-    public interface OnArtistClick {
+    public interface OnUserItemClick {
         void onArtistClick(Artist artist, ImageView profileImage);
     }
 
@@ -41,12 +43,22 @@ public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<ArtistRecycl
     }
 
     @Override
-    public void onBindViewHolder(ArtistRecyclerViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(final ArtistRecyclerViewAdapter.MyViewHolder holder, int position) {
         final Artist current = artist.get(position);
         holder.artistName.setText(current.getName());
-        /*Picasso.with(holder.avatar.getContext()).load()
+
+        Picasso.with(holder.avatar.getContext()).load()
                 .transform(new CircleTransform()).placeholder(R.mipmap.ic_launcher_round).error(R.mipmap.ic_launcher_round)
-                .into(holder.avatar);*/
+                .into(holder.avatar);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onArtistClick(current, holder.avatar);
+                }
+            }
+        });
     }
 
     @Override
@@ -66,7 +78,7 @@ public class ArtistRecyclerViewAdapter extends RecyclerView.Adapter<ArtistRecycl
         }
     }
 
-    public void setOnArtistClick(OnArtistClick listener) {
+    public void setOnUserItemClick(OnUserItemClick listener) {
         this.listener = listener;
     }
 }

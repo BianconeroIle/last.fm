@@ -54,10 +54,10 @@ public class ArtistActivity extends AppCompatActivity implements ArtistView {
     }
 
     private void initListener() {
-        adapter.setOnArtistClick(new ArtistRecyclerViewAdapter.OnArtistClick() {
+        adapter.setOnUserItemClick(new ArtistRecyclerViewAdapter.OnUserItemClick() {
             @Override
             public void onArtistClick(Artist artist, ImageView profileImage) {
-                openDetailsActivity(artist,profileImage);
+                openDetailsActivity(artist, profileImage);
             }
         });
 
